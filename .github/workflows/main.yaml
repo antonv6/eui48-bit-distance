@@ -1,4 +1,4 @@
-name: Testing
+name: Development tasks
 
 on:
   push:
@@ -65,12 +65,12 @@ jobs:
         run: |
           python -m build
 
-      - name: Check artifacts
+      - name: Check distributions
         run: |
           twine check dist/*
 
-      - name: Upload artifacts
+      - name: Upload release distributions
         uses: actions/upload-artifact@v7
         with:
-          name: dist
+          name: release-dists
           path: dist/
