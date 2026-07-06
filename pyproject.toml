@@ -19,6 +19,11 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 
+[project.urls]
+"Homepage" = "https://github.com/antonv6/eui48-bit-distance"
+"Repository" = "https://github.com/antonv6/eui48-bit-distance"
+"Issues" = "https://github.com/antonv6/eui48-bit-distance/issues"
+
 [build-system]
 requires = ["setuptools >= 78.1.1"]
 build-backend = "setuptools.build_meta"
