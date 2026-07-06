@@ -32,9 +32,13 @@ build-backend = "setuptools.build_meta"
 test = [
     "pytest (>=9.1.1,<10.0.0)",
 ]
-dev = [
+build = [
     "build",
+    "twine",
+]
+dev = [
     {include-group = "test"},
+    {include-group = "build"},
 ]
 
 [pytest]
