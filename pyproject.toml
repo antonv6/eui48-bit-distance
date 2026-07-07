@@ -1,6 +1,6 @@
 [project]
 name = "eui48-bit-distance"
-version = "0.1.0rc2"
+version = "0.1.0"
 description = "Calculate bit distance between EUI-48 (MAC)."
 authors = [
     {name = "Anton Shestakov", email = "av6@dwimlabs.net"}
@@ -12,16 +12,16 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
 ]
 
 [project.urls]
 "Homepage" = "https://github.com/antonv6/eui48-bit-distance"
-"Repository" = "https://github.com/antonv6/eui48-bit-distance"
+"Source" = "https://github.com/antonv6/eui48-bit-distance"
 "Issues" = "https://github.com/antonv6/eui48-bit-distance/issues"
 
 [build-system]
