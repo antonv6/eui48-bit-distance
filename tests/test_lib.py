@@ -24,7 +24,7 @@ def test_int_to_eui48(a, b):
     EUI48_MAX + 1,
 ])
 def test_int_to_eui48_invalid(a):
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='EUI-48'):
         assert int_to_eui48(a) is not None
 
 
