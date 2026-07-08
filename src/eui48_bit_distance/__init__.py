@@ -1,3 +1,5 @@
+""" Calculate distance in bits between EUI-48 (a.k.a. 48-bit MAC) strings. """
+
 from .lib import (
     EUI48_MAX,
     check_eui48,
