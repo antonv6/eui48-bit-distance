@@ -30,6 +30,9 @@ requires = ["setuptools >= 78.1.1"]
 build-backend = "setuptools.build_meta"
 
 [dependency-groups]
+lint = [
+    "flake8 (>=7.3.0,<8.0.0)",
+]
 test = [
     "pytest (>=9.1.1,<10.0.0)",
 ]
@@ -38,6 +41,7 @@ build = [
     "twine",
 ]
 dev = [
+    {include-group = "lint"},
     {include-group = "test"},
     {include-group = "build"},
 ]

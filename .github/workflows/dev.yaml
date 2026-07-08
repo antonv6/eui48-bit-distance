@@ -37,3 +37,32 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+
+  lint:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.13", "3.12", "3.11", "3.10"]
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip --uploaded-prior-to P7D
+          python -m pip install --group lint --uploaded-prior-to P7D
+
+      - name: Lint with flake8
+        run: |
+          flake8 src/ tests/
