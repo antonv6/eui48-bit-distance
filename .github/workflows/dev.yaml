@@ -66,3 +66,7 @@ jobs:
       - name: Lint with flake8
         run: |
           flake8 src/ tests/
+
+      - name: Lint with pylint
+        run: |
+          pylint src/ tests/
