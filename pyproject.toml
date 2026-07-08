@@ -33,6 +33,7 @@ build-backend = "setuptools.build_meta"
 lint = [
     "flake8 (>=7.3.0,<8.0.0)",
     "flake8-bugbear (>=25.11.29,<26.0.0)",
+    "flake8-commas (>=4.0.0,<5.0.0)",
 ]
 test = [
     "pytest (>=9.1.1,<10.0.0)",
