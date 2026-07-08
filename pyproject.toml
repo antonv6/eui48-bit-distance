@@ -31,6 +31,7 @@ build-backend = "setuptools.build_meta"
 
 [dependency-groups]
 lint = [
+    "bandit (>=1.9.4,<2.0.0)",
     "flake8 (>=7.3.0,<8.0.0)",
     "flake8-bugbear (>=25.11.29,<26.0.0)",
     "flake8-commas (>=4.0.0,<5.0.0)",

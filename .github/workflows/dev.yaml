@@ -63,6 +63,10 @@ jobs:
           python -m pip install --upgrade pip --uploaded-prior-to P7D
           python -m pip install --group lint --uploaded-prior-to P7D
 
+      - name: Lint with bandit
+        run: |
+          bandit -r src/
+
       - name: Lint with flake8
         run: |
           flake8 src/ tests/
