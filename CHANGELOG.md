@@ -4,6 +4,11 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.1.2 - 2026-07-09
+
+Lint the code with bandit, flake8 with extra plugins and pylint.
+
+
 ## 0.1.1 - 2026-07-08
 
 Write docstrings and add CHANGELOG.md.
