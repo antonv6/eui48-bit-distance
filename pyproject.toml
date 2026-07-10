@@ -57,4 +57,13 @@ addopts = ["--import-mode=importlib"]
 strict = true
 
 [tool.mypy]
+explicit_package_bases = true
+files = [
+    "src",
+    "tests",
+]
 strict = true
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
