@@ -63,22 +63,23 @@ jobs:
           python -m pip install --upgrade pip --uploaded-prior-to P7D
           python -m pip install --group lint --uploaded-prior-to P7D
 
-      - name: Check types with mypy
-        run: |
-          mypy --version
-          mypy src/
+      - parallel:
+        - name: Check types with mypy
+          run: |
+            mypy --version
+            mypy src/
 
-      - name: Lint with bandit
-        run: |
-          bandit --version
-          bandit -r src/
+        - name: Lint with bandit
+          run: |
+            bandit --version
+            bandit -r src/
 
-      - name: Lint with flake8
-        run: |
-          flake8 --version
-          flake8 src/ tests/
+        - name: Lint with flake8
+          run: |
+            flake8 --version
+            flake8 src/ tests/
 
-      - name: Lint with pylint
-        run: |
-          pylint --version
-          pylint src/
+        - name: Lint with pylint
+          run: |
+            pylint --version
+            pylint src/
