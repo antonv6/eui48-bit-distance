@@ -7,7 +7,7 @@ EUI48_LENGTH = EUI48_OCTETS * 2 + (EUI48_OCTETS - 1)  # 17, string length
 EUI48_MAX = 2 ** 48 - 1  # it's not a magic number if it's in the name
 
 
-def check_eui48(a):
+def check_eui48(a: str) -> bool:
     """ Check if input is a EUI-48 string. """
     if len(a) != EUI48_LENGTH:
         return False
@@ -21,27 +21,27 @@ def check_eui48(a):
     return True
 
 
-def int_to_eui48(i):
+def int_to_eui48(i: int) -> str:
     """ Convert int into EUI-48 string. """
     if 0 <= i <= EUI48_MAX:
         return i.to_bytes(6, byteorder='big', signed=False).hex(':')
     raise ValueError('this number cannot be represented as EUI-48')
 
 
-def eui48_to_int(string):
+def eui48_to_int(string: str) -> int:
     """ Convert EUI-48 string into int. """
     octets = [int(s, 16) for s in string.split(':')]
     return int.from_bytes(octets, byteorder='big', signed=False)
 
 
-def eui48_bit_distance(a, b):
+def eui48_bit_distance(a: str, b: str) -> int:
     """ Calculate bit distance between two EUI-48 strings. """
     ia = eui48_to_int(a)
     ib = eui48_to_int(b)
     return (ia ^ ib).bit_count()
 
 
-def eui48_find_similar(a, iterable, cutoff=8):
+def eui48_find_similar(a: str, iterable: list[str], cutoff: int = 8) -> list[tuple[int, str]]:
     """ Return EUI-48 strings and their differences from reference EUI-48 string. """
     result = (
         (eui48_bit_distance(a, item), item)
