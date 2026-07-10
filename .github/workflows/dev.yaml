@@ -63,6 +63,11 @@ jobs:
           python -m pip install --upgrade pip --uploaded-prior-to P7D
           python -m pip install --group lint --uploaded-prior-to P7D
 
+      - name: Check types with mypy
+        run: |
+          mypy --version
+          mypy src/
+
       - name: Lint with bandit
         run: |
           bandit --version
