@@ -1,6 +1,8 @@
 """ Calculate distance in bits between EUI-48 (a.k.a. 48-bit MAC) strings. """
 
 from string import hexdigits
+from typing import Iterable
+
 
 EUI48_OCTETS = 48 // 8
 EUI48_LENGTH = EUI48_OCTETS * 2 + (EUI48_OCTETS - 1)  # 17, string length
@@ -41,7 +43,7 @@ def eui48_bit_distance(a: str, b: str) -> int:
     return (ia ^ ib).bit_count()
 
 
-def eui48_find_similar(a: str, iterable: list[str], cutoff: int = 8) -> list[tuple[int, str]]:
+def eui48_find_similar(a: str, iterable: Iterable[str], cutoff: int = 8) -> list[tuple[int, str]]:
     """ Return EUI-48 strings and their differences from reference EUI-48 string. """
     result = (
         (eui48_bit_distance(a, item), item)
