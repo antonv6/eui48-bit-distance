@@ -4,6 +4,11 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.2.0 - 2026-07-10
+
+Add type hints to the code, checked with mypy in strict mode.
+
+
 ## 0.1.2 - 2026-07-09
 
 Lint the code with bandit, flake8 with extra plugins and pylint.
