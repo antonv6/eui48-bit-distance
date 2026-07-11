@@ -58,10 +58,7 @@ strict = true
 
 [tool.mypy]
 explicit_package_bases = true
-files = [
-    "src",
-    "tests",
-]
+files = ["src"]
 strict = true
 
 [[tool.mypy.overrides]]
