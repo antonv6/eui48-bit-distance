@@ -4,6 +4,11 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.2.1 - 2026-07-11
+
+Property-based testing using Hypothesis.
+
+
 ## 0.2.0 - 2026-07-10
 
 Add type hints to the code, checked with mypy in strict mode.

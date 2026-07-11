@@ -1,6 +1,6 @@
 [project]
 name = "eui48-bit-distance"
-version = "0.2.0"
+version = "0.2.1"
 description = "Calculate bit distance between EUI-48 (MAC)."
 authors = [
     {name = "Anton Shestakov", email = "av6@dwimlabs.net"}
