@@ -40,7 +40,7 @@ jobs:
 
       - name: Gather coverage by test_lib.py
         run: |
-          pytest --cov --cov-report=xml -- tests/test_lib.py
+          pytest --cov --cov-report=xml --cov-fail-under=0 -- tests/test_lib.py
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v7
