@@ -47,7 +47,6 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: python-${{ matrix.python-version }}
-          verbose: true
 
   lint:
     runs-on: ubuntu-latest
