@@ -30,9 +30,9 @@ def int_to_eui48(i: int) -> str:
     raise ValueError('this number cannot be represented as EUI-48')
 
 
-def eui48_to_int(string: str) -> int:
+def eui48_to_int(a: str) -> int:
     """ Convert EUI-48 string into int. """
-    octets = [int(s, 16) for s in string.split(':')]
+    octets = [int(s, 16) for s in a.split(':')]
     return int.from_bytes(octets, byteorder='big', signed=False)
 
 
