@@ -36,7 +36,18 @@ jobs:
 
       - name: Test with pytest
         run: |
-          pytest --cov
+          pytest --no-cov
+
+      - name: Gather coverage by test_lib.py
+        run: |
+          pytest --cov --cov-report=xml -- tests/test_lib.py
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v7
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: python-${{ matrix.python-version }}
+          verbose: true
 
   lint:
     runs-on: ubuntu-latest
