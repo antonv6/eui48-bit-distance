@@ -4,6 +4,11 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.2.2 - 2026-07-12
+
+Measure test coverage using ``pytest-cov`` and ``coverage``.
+
+
 ## 0.2.1 - 2026-07-11
 
 Property-based testing using Hypothesis.
