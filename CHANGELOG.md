@@ -4,6 +4,11 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.2.3 - 2026-07-13
+
+Benchmark performance with `pytest-benchmark`.
+
+
 ## 0.2.2 - 2026-07-12
 
 Measure test coverage using `pytest-cov` and `coverage`.
