@@ -6,7 +6,7 @@ way.
 
 ## 0.2.2 - 2026-07-12
 
-Measure test coverage using ``pytest-cov`` and ``coverage``.
+Measure test coverage using `pytest-cov` and `coverage`.
 
 
 ## 0.2.1 - 2026-07-11
@@ -16,12 +16,12 @@ Property-based testing using Hypothesis.
 
 ## 0.2.0 - 2026-07-10
 
-Add type hints to the code, checked with mypy in strict mode.
+Add type hints to the code, checked with `mypy` in strict mode.
 
 
 ## 0.1.2 - 2026-07-09
 
-Lint the code with bandit, flake8 with extra plugins and pylint.
+Lint the code with `bandit`, `flake8` with extra plugins and `pylint`.
 
 
 ## 0.1.1 - 2026-07-08
