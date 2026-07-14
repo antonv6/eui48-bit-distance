@@ -25,6 +25,7 @@ classifiers = [
 "Source" = "https://github.com/antonv6/eui48-bit-distance"
 "Issues" = "https://github.com/antonv6/eui48-bit-distance/issues"
 "Changelog" = "https://github.com/antonv6/eui48-bit-distance/blob/main/CHANGELOG.md"
+"Download" = "https://github.com/antonv6/eui48-bit-distance/releases"
 
 [build-system]
 requires = ["setuptools >= 78.1.1"]
