@@ -4,6 +4,14 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.2.4 - 2026-07-14
+
+Use more PEP 570 positional-only parameters and keyword-only parameters.
+
+We're breaking the API somewhat at this moment to make it easier to implement
+speedup extensions in future.
+
+
 ## 0.2.3 - 2026-07-13
 
 Benchmark performance with `pytest-benchmark`.
