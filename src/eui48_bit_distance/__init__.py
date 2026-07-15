@@ -13,8 +13,8 @@ from .lib import (
 __all__ = [
     'EUI48_MAX',
     'check_eui48',
+    'int_to_eui48',
+    'eui48_to_int',
     'eui48_bit_distance',
     'eui48_find_similar',
-    'eui48_to_int',
-    'int_to_eui48',
 ]
