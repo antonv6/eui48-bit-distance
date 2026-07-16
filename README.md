@@ -12,6 +12,7 @@
 
 ## Links
 
+- **Docs:** https://antonv6.github.io/eui48-bit-distance/
 - **Source:** https://github.com/antonv6/eui48-bit-distance
 - **Issues:** https://github.com/antonv6/eui48-bit-distance/issues
 - **Changelog:** https://github.com/antonv6/eui48-bit-distance/blob/main/CHANGELOG.md
