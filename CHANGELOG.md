@@ -4,6 +4,13 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.2.5 - 2026-07-16
+
+Build HTML documentation from docstrings using Sphinx with autodoc extension.
+
+Deploy documentation to gh-pages.
+
+
 ## 0.2.4 - 2026-07-14
 
 Use more PEP 570 positional-only parameters and keyword-only parameters.
