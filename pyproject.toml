@@ -72,6 +72,7 @@ strict = true
 [tool.tox]
 env_list = [
     "lint",
+    "docs",
 ]
 
 [tool.tox.env.lint]
@@ -83,6 +84,11 @@ commands = [
     ["flake8", "docs", "src", "tests"],
     ["pylint", "src"],
 ]
+
+[tool.tox.env.docs]
+dependency_groups = ["doc"]
+skip_install = true
+commands = [["sphinx-build", "-M", "html", "docs/", "docs/_build/"]]
 
 [tool.coverage.run]
 branch = true
