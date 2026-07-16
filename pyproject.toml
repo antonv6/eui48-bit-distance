@@ -64,8 +64,7 @@ dev = [
     {include-group = "build"},
 ]
 
-[pytest]
-addopts = ["--import-mode=importlib"]
+[tool.pytest]
 filterwarnings = ["error"]
 strict = true
 
