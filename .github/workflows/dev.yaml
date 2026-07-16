@@ -82,12 +82,12 @@ jobs:
         - name: Lint with bandit
           run: |
             bandit --version
-            bandit -r src/
+            bandit -r docs/ src/
 
         - name: Lint with flake8
           run: |
             flake8 --version
-            flake8 src/ tests/
+            flake8 docs/ src/ tests/
 
         - name: Lint with pylint
           run: |
