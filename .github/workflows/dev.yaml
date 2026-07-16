@@ -77,7 +77,7 @@ jobs:
         - name: Check types with mypy
           run: |
             mypy --version
-            mypy
+            mypy --install-types --non-interactive
 
         - name: Lint with bandit
           run: |
