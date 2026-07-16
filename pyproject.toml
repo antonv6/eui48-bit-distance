@@ -58,6 +58,7 @@ build = [
     "twine",
 ]
 dev = [
+    "tox (>=4.56.4,<5.0.0)",
     {include-group = "doc"},
     {include-group = "lint"},
     {include-group = "test"},
@@ -67,6 +68,21 @@ dev = [
 [tool.pytest]
 filterwarnings = ["error"]
 strict = true
+
+[tool.tox]
+env_list = [
+    "lint",
+]
+
+[tool.tox.env.lint]
+dependency_groups = ["lint"]
+skip_install = true
+commands = [
+    ["mypy", "--install-types", "--non-interactive"],
+    ["bandit", "-r", "docs", "src"],
+    ["flake8", "docs", "src", "tests"],
+    ["pylint", "src"],
+]
 
 [tool.coverage.run]
 branch = true
