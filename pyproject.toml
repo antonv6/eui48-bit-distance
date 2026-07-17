@@ -70,14 +70,29 @@ filterwarnings = ["error"]
 strict = true
 
 [tool.tox]
+requires = ["tox", "pip"]
 env_list = [
+    "test",
     "lint",
     "docs",
 ]
+skip_missing_interpreters = true
+
+[tool.tox.env_run_base]
+skip_install = true
+commands = [["python", "--version"]]
+
+[tool.tox.env_base.test]
+factors = [["3.13", "3.12", "3.11", "3.10", "pypy3.11", "pypy3.10"]]
+dependency_groups = ["test"]
+commands = [["pytest", {replace = "posargs", default = ["tests/test_lib.py"], extend = true}]]
+labels = ["test"]
+
+[tool.tox.env.test]
+commands = [["pytest", {replace = "posargs", default = ["tests"], extend = true}]]
 
 [tool.tox.env.lint]
 dependency_groups = ["lint"]
-skip_install = true
 commands = [
     ["mypy", "--install-types", "--non-interactive"],
     ["bandit", "-r", "docs", "src"],
@@ -87,7 +102,6 @@ commands = [
 
 [tool.tox.env.docs]
 dependency_groups = ["doc"]
-skip_install = true
 commands = [["sphinx-build", "-M", "html", "docs/", "docs/_build/"]]
 
 [tool.coverage.run]
