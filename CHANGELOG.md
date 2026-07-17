@@ -4,6 +4,12 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.3.0 - 2026-07-17
+
+Use `tox` to run linters, build documentation and distribution files, and test
+locally with different Python versions.
+
+
 ## 0.2.5 - 2026-07-16
 
 Build HTML documentation from docstrings using Sphinx with autodoc extension.

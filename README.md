@@ -1,6 +1,6 @@
 # eui48-bit-distance
 
-[![Status: Alpha](https://img.shields.io/pypi/status/eui48-bit-distance)](https://pypi.org/project/eui48-bit-distance/)
+[![Status: Beta](https://img.shields.io/pypi/status/eui48-bit-distance)](https://pypi.org/project/eui48-bit-distance/)
 [![Release](https://img.shields.io/github/v/release/antonv6/eui48-bit-distance)](https://github.com/antonv6/eui48-bit-distance/releases)
 [![PyPI](https://img.shields.io/pypi/v/eui48-bit-distance)](https://pypi.org/project/eui48-bit-distance/)
 [![Supported Python versions](https://img.shields.io/pypi/pyversions/eui48-bit-distance)](https://pypi.org/project/eui48-bit-distance/)

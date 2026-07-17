@@ -1,6 +1,6 @@
 [project]
 name = "eui48-bit-distance"
-version = "0.2.5"
+version = "0.3.0"
 description = "Calculate bit distance between EUI-48 (MAC)."
 authors = [
     {name = "Anton Shestakov", email = "av6@dwimlabs.net"}
@@ -9,7 +9,7 @@ license = "Apache-2.0"
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
