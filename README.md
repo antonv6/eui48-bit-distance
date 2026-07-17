@@ -65,3 +65,9 @@ Building HTML documentation:
 ```bash
 .venv/bin/tox -e docs
 ```
+
+Building distribution files:
+
+```bash
+.venv/bin/tox -e build
+```

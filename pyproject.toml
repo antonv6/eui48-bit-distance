@@ -75,6 +75,7 @@ env_list = [
     "test",
     "lint",
     "docs",
+    "build",
 ]
 skip_missing_interpreters = true
 
@@ -103,6 +104,13 @@ commands = [
 [tool.tox.env.docs]
 dependency_groups = ["doc"]
 commands = [["sphinx-build", "-M", "html", "docs/", "docs/_build/"]]
+
+[tool.tox.env.build]
+dependency_groups = ["build"]
+commands = [
+    ["python", "-m", "build"],
+    ["twine", "check", "dist/*"],
+]
 
 [tool.coverage.run]
 branch = true
