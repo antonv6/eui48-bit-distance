@@ -18,7 +18,7 @@ jobs:
         python-version: ["3.14", "3.13", "3.12", "3.11", "3.10", "pypy3.11", "pypy3.10"]
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
@@ -55,7 +55,7 @@ jobs:
         python-version: ["3.14", "3.13", "3.12", "3.11", "3.10"]
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
