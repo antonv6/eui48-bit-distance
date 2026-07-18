@@ -17,6 +17,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Software Development :: Libraries",
     "Typing :: Typed",
 ]
@@ -84,7 +85,7 @@ skip_install = true
 commands = [["python", "--version"]]
 
 [tool.tox.env_base.test]
-factors = [["3.13", "3.12", "3.11", "3.10", "pypy3.11", "pypy3.10"]]
+factors = [["3.14", "3.13", "3.12", "3.11", "3.10", "pypy3.11", "pypy3.10"]]
 dependency_groups = ["test"]
 commands = [["pytest", {replace = "posargs", default = ["tests/test_lib.py"], extend = true}]]
 labels = ["test"]
