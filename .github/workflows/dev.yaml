@@ -89,3 +89,8 @@ jobs:
           run: |
             pylint --version
             pylint src/
+
+        - name: Validate pyproject.toml
+          run: |
+            validate-pyproject --version
+            validate-pyproject pyproject.toml

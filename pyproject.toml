@@ -46,6 +46,7 @@ lint = [
     "flake8-pytest-style (>=2.2.0,<3.0.0)",
     "mypy (>=2.2.0,<3.0.0)",
     "pylint (>=4.0.6,<5.0.0)",
+    "validate-pyproject[all,store] (==0.25)",
 ]
 test = [
     "hypothesis (>=6.155.7,<7.0.0); implementation_name != 'pypy' or python_version >= '3.11'",
@@ -101,6 +102,7 @@ commands = [
     ["bandit", "-r", "docs", "src"],
     ["flake8", "docs", "src", "tests"],
     ["pylint", "src"],
+    ["validate-pyproject", "pyproject.toml"],
 ]
 
 [tool.tox.env.docs]
