@@ -56,6 +56,7 @@ test = [
 ]
 build = [
     "build",
+    "check-wheel-contents (==0.6.3)",
     "twine",
 ]
 dev = [
@@ -111,6 +112,7 @@ dependency_groups = ["build"]
 commands = [
     ["python", "-m", "build"],
     ["twine", "check", "dist/*"],
+    ["check-wheel-contents", "dist/"],
 ]
 
 [tool.coverage.run]
