@@ -4,6 +4,14 @@ This file documents changes to eui48-bit-distance project in a user-friendly
 way.
 
 
+## 0.3.1 - 2026-07-18
+
+Support Python 3.14.
+
+Various improvements on the development side, especially tightening CI and
+release security.
+
+
 ## 0.3.0 - 2026-07-17
 
 Use `tox` to run linters, build documentation and distribution files, and test
