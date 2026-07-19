@@ -32,7 +32,7 @@ language = 'en'
 
 html_theme = 'furo'
 html_theme_options = {
-    'top_of_page_buttons': [],
+    'top_of_page_buttons': ['view'],
     'source_repository': 'https://github.com/antonv6/eui48-bit-distance',
     'source_branch': 'main',
     'source_directory': 'docs/',
