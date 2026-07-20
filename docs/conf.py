@@ -37,3 +37,7 @@ html_theme_options = {
     'source_branch': 'main',
     'source_directory': 'docs/',
 }
+
+nitpick_ignore = {
+    ('py:class', 'collections.abc.Iterable'),
+}
