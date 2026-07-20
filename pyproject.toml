@@ -45,6 +45,7 @@ lint = [
     "flake8-commas (>=4.0.0,<5.0.0)",
     "flake8-pytest-style (>=2.2.0,<3.0.0)",
     "mypy (>=2.2.0,<3.0.0)",
+    "pip-audit (>=2.10.1,<3.0.0)",
     "pylint (>=4.0.6,<5.0.0)",
     "validate-pyproject[all,store] (==0.25)",
 ]
@@ -103,6 +104,7 @@ commands = [
     ["flake8", "docs", "src", "tests"],
     ["pylint", "src"],
     ["validate-pyproject", "pyproject.toml"],
+    ["pip-audit", "--strict"],
 ]
 
 [tool.tox.env.docs]

@@ -94,3 +94,8 @@ jobs:
           run: |
             validate-pyproject --version
             validate-pyproject pyproject.toml
+
+        - name: Audit the Python environment
+          run: |
+            pip-audit --version
+            pip-audit --strict
