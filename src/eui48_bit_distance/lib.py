@@ -1,7 +1,7 @@
 """ Calculate distance in bits between EUI-48 (a.k.a. 48-bit MAC) strings. """
 
+from collections.abc import Iterable
 from string import hexdigits
-from typing import Iterable
 
 
 EUI48_OCTETS = 48 // 8
