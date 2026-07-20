@@ -104,7 +104,7 @@ commands = [
     ["flake8", "docs", "src", "tests"],
     ["pylint", "src"],
     ["validate-pyproject", "pyproject.toml"],
-    ["pip-audit", "--strict"],
+    ["pip-audit", "--strict", "--desc", "on", "--aliases", "on"],
 ]
 
 [tool.tox.env.docs]

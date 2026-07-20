@@ -98,4 +98,4 @@ jobs:
         - name: Audit the Python environment
           run: |
             pip-audit --version
-            pip-audit --strict
+            pip-audit --strict --desc on --aliases on
