@@ -37,5 +37,3 @@ html_theme_options = {
     'source_branch': 'main',
     'source_directory': 'docs/',
 }
-
-html_static_path = ['_static']
