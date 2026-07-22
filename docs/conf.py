@@ -20,6 +20,7 @@ author = 'Anton Shestakov'
 
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.coverage',
 ]
 
 templates_path = ['_templates']
