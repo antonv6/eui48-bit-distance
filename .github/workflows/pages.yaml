@@ -31,6 +31,9 @@ jobs:
       - name: Build HTML docs
         run: |
           sphinx-build -M html docs/ docs/_build/ --nitpicky --fail-on-warning
+
+      - name: Show documentation coverage
+        run: |
           sphinx-build -M coverage docs/ docs/_build/ --nitpicky --fail-on-warning
 
       - name: Upload artifacts
