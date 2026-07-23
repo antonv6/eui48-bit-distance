@@ -31,7 +31,7 @@ jobs:
 
       - name: Check distributions
         run: |
-          twine check dist/*
+          twine check --strict dist/*
 
       - name: Check wheel contents
         run: |

@@ -119,7 +119,7 @@ commands = [
 dependency_groups = ["build"]
 commands = [
     ["python", "-m", "build"],
-    ["twine", "check", "dist/*"],
+    ["twine", "check", "--strict", "dist/*"],
     ["check-wheel-contents", "dist/"],
 ]
 
