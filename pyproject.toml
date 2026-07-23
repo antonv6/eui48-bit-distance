@@ -112,6 +112,7 @@ dependency_groups = ["doc"]
 commands = [
     ["sphinx-build", "-M", "html", "docs/", "docs/_build/", "--nitpicky", "--fail-on-warning"],
     ["sphinx-build", "-M", "coverage", "docs/", "docs/_build/", "--nitpicky", "--fail-on-warning"],
+    ["sphinx-build", "-M", "linkcheck", "docs/", "docs/_build/", "--nitpicky", "--fail-on-warning"],
 ]
 
 [tool.tox.env.build]

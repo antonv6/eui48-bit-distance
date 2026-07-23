@@ -36,6 +36,10 @@ jobs:
         run: |
           sphinx-build -M coverage docs/ docs/_build/ --nitpicky --fail-on-warning
 
+      - name: Check documentation links
+        run: |
+          sphinx-build -M linkcheck docs/ docs/_build/ --nitpicky --fail-on-warning
+
       - name: Upload artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
