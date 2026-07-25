@@ -1,7 +1,12 @@
 # Changelog
 
-This file documents changes to eui48-bit-distance project in a user-friendly
-way.
+
+## 0.3.2 - 2026-07-24
+
+Various improvements to the development process, CI and security-related
+improvements.
+
+Improve HTML documentation, include README.md and CHANGELOG.md as well.
 
 
 ## 0.3.1 - 2026-07-18
