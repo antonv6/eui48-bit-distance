@@ -1,13 +1,13 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="./">
-  <head>
-<meta charset="utf-8">
+  <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="#">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="prev" title="eui48_bit_distance package" href="eui48_bit_distance.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-<meta name="robots" content="noindex" />
-<title>Search - eui48-bit-distance  documentation</title><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+        <title>Changelog - eui48-bit-distance documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
@@ -172,7 +172,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -184,15 +184,15 @@
   
   <span class="sidebar-brand-text">eui48-bit-distance  documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="#" role="search">
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="eui48_bit_distance.html">eui48_bit_distance package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Changelog</a></li>
 </ul>
 
 </div>
@@ -212,7 +212,12 @@
           <span>Back to top</span>
         </a>
         <div class="content-icon-container">
-          <div class="theme-toggle-container theme-toggle-content">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/antonv6/eui48-bit-distance/blob/main/docs/changelog.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
@@ -220,22 +225,70 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          
-<noscript>
-<div class="admonition error">
-  <p class="admonition-title">Error</p>
-  <p>
-    Please activate JavaScript to enable the search functionality.
-  </p>
-</div>
-</noscript>
-
-<div id="search-results"></div>
+          <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>0.3.2 - 2026-07-24<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>Various improvements to the development process, CI and security-related
+improvements.</p>
+<p>Improve HTML documentation, include README.md and CHANGELOG.md as well.</p>
+</section>
+<section id="id2">
+<h2>0.3.1 - 2026-07-18<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Support Python 3.14.</p>
+<p>Various improvements on the development side, especially tightening CI and
+release security.</p>
+</section>
+<section id="id3">
+<h2>0.3.0 - 2026-07-17<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">tox</span></code> to run linters, build documentation and distribution files, and test
+locally with different Python versions.</p>
+</section>
+<section id="id4">
+<h2>0.2.5 - 2026-07-16<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>Build HTML documentation from docstrings using Sphinx with autodoc extension.</p>
+<p>Deploy documentation to gh-pages.</p>
+</section>
+<section id="id5">
+<h2>0.2.4 - 2026-07-14<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>Use more PEP 570 positional-only parameters and keyword-only parameters.</p>
+<p>We’re breaking the API somewhat at this moment to make it easier to implement
+speedup extensions in future.</p>
+</section>
+<section id="id6">
+<h2>0.2.3 - 2026-07-13<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>Benchmark performance with <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code>.</p>
+</section>
+<section id="id7">
+<h2>0.2.2 - 2026-07-12<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>Measure test coverage using <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> and <code class="docutils literal notranslate"><span class="pre">coverage</span></code>.</p>
+</section>
+<section id="id8">
+<h2>0.2.1 - 2026-07-11<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>Property-based testing using Hypothesis.</p>
+</section>
+<section id="id9">
+<h2>0.2.0 - 2026-07-10<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>Add type hints to the code, checked with <code class="docutils literal notranslate"><span class="pre">mypy</span></code> in strict mode.</p>
+</section>
+<section id="id10">
+<h2>0.1.2 - 2026-07-09<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>Lint the code with <code class="docutils literal notranslate"><span class="pre">bandit</span></code>, <code class="docutils literal notranslate"><span class="pre">flake8</span></code> with extra plugins and <code class="docutils literal notranslate"><span class="pre">pylint</span></code>.</p>
+</section>
+<section id="id11">
+<h2>0.1.1 - 2026-07-08<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>Write docstrings and add CHANGELOG.md.</p>
+</section>
+<section id="id12">
+<h2>0.1.0 - 2026-07-07<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p>Base functionality implemented.</p>
+</section>
+</section>
 
         </article>
       </div>
@@ -243,7 +296,17 @@
         
         <div class="related-pages">
           
-          
+          <a class="prev-page" href="eui48_bit_distance.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">eui48_bit_distance package</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -262,8 +325,38 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#id1">0.3.2 - 2026-07-24</a></li>
+<li><a class="reference internal" href="#id2">0.3.1 - 2026-07-18</a></li>
+<li><a class="reference internal" href="#id3">0.3.0 - 2026-07-17</a></li>
+<li><a class="reference internal" href="#id4">0.2.5 - 2026-07-16</a></li>
+<li><a class="reference internal" href="#id5">0.2.4 - 2026-07-14</a></li>
+<li><a class="reference internal" href="#id6">0.2.3 - 2026-07-13</a></li>
+<li><a class="reference internal" href="#id7">0.2.2 - 2026-07-12</a></li>
+<li><a class="reference internal" href="#id8">0.2.1 - 2026-07-11</a></li>
+<li><a class="reference internal" href="#id9">0.2.0 - 2026-07-10</a></li>
+<li><a class="reference internal" href="#id10">0.1.2 - 2026-07-09</a></li>
+<li><a class="reference internal" href="#id11">0.1.1 - 2026-07-08</a></li>
+<li><a class="reference internal" href="#id12">0.1.0 - 2026-07-07</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -272,8 +365,5 @@
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/scripts/furo.js?v=46bd48cc"></script>
-    
-<script src="_static/searchtools.js"></script>
-<script src="_static/language_data.js"></script>
-<script src="searchindex.js"></script></body>
+    </body>
 </html>
