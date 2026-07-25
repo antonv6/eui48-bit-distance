@@ -10,7 +10,7 @@
 [![CodeQL](https://github.com/antonv6/eui48-bit-distance/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/antonv6/eui48-bit-distance/actions/workflows/github-code-scanning/codeql)
 [![Typed](https://img.shields.io/pypi/types/eui48-bit-distance)](https://pypi.org/project/eui48-bit-distance/)
 
-*Calculate bit distance between EUI-48 (MAC).*
+*Calculate bit distance between EUI-48 identifiers.*
 
 ## Links
 
