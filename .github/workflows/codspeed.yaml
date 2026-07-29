@@ -1,0 +1,43 @@
+name: CodSpeed benchmarks
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+  # `workflow_dispatch` allows CodSpeed to trigger backtest
+  # performance analysis in order to generate initial data.
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  benchmarks:
+    name: Run benchmarks
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write # required for OIDC authentication with CodSpeed
+
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip --uploaded-prior-to P7D
+          python -m pip install --group test --uploaded-prior-to P7D
+          python -m pip install pytest-codspeed --uploaded-prior-to P7D
+
+      - name: Run the benchmarks
+        uses: CodSpeedHQ/action@f99becdce5e5d51fd556489ebef684f4ecfd6286 # v4.18.5
+        with:
+          mode: simulation
+          run: pytest tests/test_benchmark.py --codspeed
