@@ -95,6 +95,7 @@ commands = [["pytest", {replace = "posargs", default = ["tests/test_lib.py"], ex
 labels = ["test"]
 
 [tool.tox.env.test]
+dependency_groups = ["test"]
 commands = [["pytest", {replace = "posargs", default = ["tests"], extend = true}]]
 
 [tool.tox.env.lint]
