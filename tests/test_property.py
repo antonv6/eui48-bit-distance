@@ -25,6 +25,11 @@ def test_eui48_case(a):
     assert eui48_to_int(eui48.lower()) == eui48_to_int(eui48.upper())
 
 
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_formats(a):
+    assert eui48_to_int(int_to_eui48(a, sep=':')) == eui48_to_int(int_to_eui48(a, sep='-'))
+
+
 @given(st.integers(0, EUI48_MAX), st.integers(0, 48))
 def test_eui48_bit_distance(base, dist):
     mask = 2 ** dist - 1
