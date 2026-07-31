@@ -42,7 +42,16 @@ def test_int_to_eui48_invalid(a):
     ('00:00:00:00:01:00', 256),
     ('ff:ff:ff:ff:ff:ff', EUI48_MAX),
 ])
-def test_eui48_to_int(a, b):
+def test_eui48_to_int_colon(a, b):
+    assert eui48_to_int(a) == b
+
+
+@pytest.mark.parametrize('a, b', [
+    ('00-00-00-00-00-00', 0),
+    ('00-00-00-00-01-00', 256),
+    ('ff-ff-ff-ff-ff-ff', EUI48_MAX),
+])
+def test_eui48_to_int_hyphen(a, b):
     assert eui48_to_int(a) == b
 
 
