@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 - unreleased
+
+Support `-` as the separator.
+
+Supported formats are now `12:34:56:78:90:ab` and `12-34-56-78-90-ab`.
+
 
 ## 0.3.2 - 2026-07-24
 
