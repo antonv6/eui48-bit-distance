@@ -7,6 +7,7 @@ from string import hexdigits
 EUI48_OCTETS = 48 // 8
 EUI48_LENGTH = EUI48_OCTETS * 2 + (EUI48_OCTETS - 1)  # 17, string length
 EUI48_MAX = 2 ** 48 - 1  # it's not a magic number if it's in the name
+EUI48_SEPARATORS = frozenset({'-', ':'})
 
 
 def check_eui48(a: str, /) -> bool:
@@ -16,24 +17,29 @@ def check_eui48(a: str, /) -> bool:
     """
     if len(a) != EUI48_LENGTH:
         return False
+    sep = None
     isep = frozenset(range(2, EUI48_LENGTH, 3))
     for i, c in enumerate(a):
         if i in isep:
-            if c != ':':
+            if sep is None:
+                if c not in EUI48_SEPARATORS:
+                    return False
+                sep = c
+            elif c != sep:
                 return False
         elif c not in hexdigits:
             return False
     return True
 
 
-def int_to_eui48(i: int, /) -> str:
+def int_to_eui48(i: int, /, *, sep: str = ':') -> str:
     """ Convert int into EUI-48 string.
 
     :raises ValueError: If the provided value cannot be represented by EUI-48.
     :return: `i` converted from ``int`` into EUI-48 string.
     """
     if 0 <= i <= EUI48_MAX:
-        return i.to_bytes(6, byteorder='big', signed=False).hex(':')
+        return i.to_bytes(6, byteorder='big', signed=False).hex(sep)
     raise ValueError('this number cannot be represented as EUI-48')
 
 
@@ -42,7 +48,8 @@ def eui48_to_int(a: str, /) -> int:
 
     :return: `a` converted from EUI-48 string into ``int``.
     """
-    octets = [int(s, 16) for s in a.split(':')]
+    sep = a[2]
+    octets = [int(s, 16) for s in a.split(sep)]
     return int.from_bytes(octets, byteorder='big', signed=False)
 
 

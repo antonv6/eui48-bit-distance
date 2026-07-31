@@ -15,8 +15,17 @@ from src.eui48_bit_distance import (
     (256, '00:00:00:00:01:00'),
     (EUI48_MAX, 'ff:ff:ff:ff:ff:ff'),
 ])
-def test_int_to_eui48(a, b):
-    assert int_to_eui48(a) == b
+def test_int_to_eui48_colon(a, b):
+    assert int_to_eui48(a, sep=':') == b
+
+
+@pytest.mark.parametrize('a, b', [
+    (0, '00-00-00-00-00-00'),
+    (256, '00-00-00-00-01-00'),
+    (EUI48_MAX, 'ff-ff-ff-ff-ff-ff'),
+])
+def test_int_to_eui48_hyphen(a, b):
+    assert int_to_eui48(a, sep='-') == b
 
 
 @pytest.mark.parametrize('a', [
@@ -42,16 +51,20 @@ def test_eui48_to_int(a, b):
     '12:34:56:78:90:ab',
     'ab:cd:ef:ab:cd:ef',
     '1a:2b:3c:4d:5e:6f',
+    '00-00-00-00-00-00',
+    'ab-cd-ef-AB-CD-EF',
 ])
 def test_check_eui48_true(a):
     assert check_eui48(a) is True
 
 
 @pytest.mark.parametrize('a', [
-    '00-00-00-00-00-00',
+    '00-00-00:00-00-00',
+    '11:11:11-11:11:11',
     'xx:xx:xx:xx:xx:xx',
     '00a00b00c00d00e00',
     '123456:::::7890ab',
+    'F0-00-------00-0D',
     '1234567890ab',
     'ca:fe',
 ])
