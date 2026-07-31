@@ -11,6 +11,21 @@ from src.eui48_bit_distance import (
 
 
 @pytest.mark.parametrize('a, b', [
+    (0,         0b00000000_00000000_00000000_00000000_00000000_00000000),
+    (EUI48_MAX, 0b11111111_11111111_11111111_11111111_11111111_11111111),
+])
+def test_eui48_constants(a, b):
+    """ This is a sanity check.
+
+    It's also useful to visualize how we represent EUI-48 identifiers as integers in our codebase, specifically the bit
+    order.
+
+    Right now we don't care about bit order, but it might become important in future.
+    """
+    assert a == b
+
+
+@pytest.mark.parametrize('a, b', [
     (0, '00:00:00:00:00:00'),
     (256, '00:00:00:00:01:00'),
     (EUI48_MAX, 'ff:ff:ff:ff:ff:ff'),
