@@ -54,7 +54,7 @@ def eui48_to_int(a: str, /) -> int:
     Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Letters can be in either upper or lower case.
 
     No checks are performed on the input: if the provided string is not an EUI-48 identifier, this function will produce
-    an error. Use func:`check_eui48` first if you're not sure about the input.
+    an error. Use :func:`check_eui48` first if you're not sure about the input.
 
     :return: `a` converted from EUI-48 identifier into ``int``.
     """
