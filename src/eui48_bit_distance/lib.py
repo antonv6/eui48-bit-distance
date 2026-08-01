@@ -3,6 +3,8 @@
 from collections.abc import Iterable
 from string import hexdigits
 
+import Cython
+
 
 EUI48_OCTETS = 48 // 8
 EUI48_LENGTH = EUI48_OCTETS * 2 + (EUI48_OCTETS - 1)  # 17, string length
@@ -34,7 +36,7 @@ def check_eui48(a: str, /) -> bool:
     return True
 
 
-def int_to_eui48(i: int, /, *, sep: str = ':') -> str:
+def int_to_eui48(i: Cython.uint, /, *, sep: str = ':') -> str:
     """ Convert an integer into an EUI-48 identifier.
 
     Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Set `sep` to either ':' (the default value) or
@@ -48,7 +50,7 @@ def int_to_eui48(i: int, /, *, sep: str = ':') -> str:
     raise ValueError('this number cannot be represented as EUI-48')
 
 
-def eui48_to_int(a: str, /) -> int:
+def eui48_to_int(a: str, /) -> Cython.uint:
     """ Convert an EUI-48 identifier into an integer.
 
     Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Letters can be in either upper or lower case.
@@ -68,12 +70,12 @@ def eui48_bit_distance(a: str, b: str, /) -> int:
 
     :return: The amount of bits that are different between `a` and `b`.
     """
-    ia = eui48_to_int(a)
-    ib = eui48_to_int(b)
+    ia: Cython.uint = eui48_to_int(a)
+    ib: Cython.uint = eui48_to_int(b)
     return (ia ^ ib).bit_count()
 
 
-def eui48_find_similar(a: str, iterable: Iterable[str], /, *, cutoff: int = 8) -> list[tuple[int, str]]:
+def eui48_find_similar(a: str, iterable: Iterable[str], /, *, cutoff: Cython.uint = 8) -> list[tuple[int, str]]:
     """ Return EUI-48 identifiers and their distances from the reference EUI-48 identifier.
 
     This function measures and orders output by the distances between `a` and every string in `iterable`. To reduce the
