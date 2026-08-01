@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.0 - unreleased
+## 0.4.0 - 2026-08-01
 
 Support `-` as the separator.
 
