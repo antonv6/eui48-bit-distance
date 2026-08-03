@@ -12,6 +12,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
+    "Programming Language :: Cython",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -30,7 +31,10 @@ classifiers = [
 "Docs" = "https://antonv6.github.io/eui48-bit-distance/"
 
 [build-system]
-requires = ["setuptools >= 78.1.1"]
+requires = [
+    "cython (>=3.2.8)",
+    "setuptools (>=78.1.1)",
+]
 build-backend = "setuptools.build_meta"
 
 [dependency-groups]
@@ -60,6 +64,7 @@ test = [
 build = [
     "build",
     "check-wheel-contents (==0.6.3)",
+    "cython (>=3.2.8,<4.0.0)",
     "twine",
 ]
 dev = [
@@ -85,7 +90,6 @@ env_list = [
 skip_missing_interpreters = true
 
 [tool.tox.env_run_base]
-skip_install = true
 commands = [["python", "--version"]]
 
 [tool.tox.env_base.test]
@@ -100,6 +104,7 @@ commands = [["pytest", {replace = "posargs", default = ["tests"], extend = true}
 
 [tool.tox.env.lint]
 dependency_groups = ["lint"]
+skip_install = true
 commands = [
     ["mypy", "--install-types", "--non-interactive"],
     ["bandit", "-r", "docs", "src"],
@@ -111,6 +116,7 @@ commands = [
 
 [tool.tox.env.docs]
 dependency_groups = ["doc"]
+skip_install = true
 commands = [
     ["sphinx-build", "-M", "html", "docs/", "docs/_build/", "--nitpicky", "--fail-on-warning"],
     ["sphinx-build", "-M", "coverage", "docs/", "docs/_build/", "--nitpicky", "--fail-on-warning"],
