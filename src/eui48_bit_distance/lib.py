@@ -1,66 +1,84 @@
 """ Calculate distance in bits between EUI-48 (a.k.a. 48-bit MAC) strings. """
 
 from collections.abc import Iterable
+from itertools import islice
 from string import hexdigits
 
 
-EUI48_OCTETS = 48 // 8
-EUI48_LENGTH = EUI48_OCTETS * 2 + (EUI48_OCTETS - 1)  # 17, string length
-EUI48_MAX = 2 ** 48 - 1  # it's not a magic number if it's in the name
-EUI48_SEPARATORS = frozenset({'-', ':'})
+EUI48_MAX = 2 ** 48 - 1
+
+
+class EUI48Format:
+    def __init__(self, example: str, sep: str) -> None:
+        self.example = example
+        self.sep = sep
+        self.group = example.find(sep)
+        self.length = len(example)
+        self.isep = tuple(range(self.group, self.length, self.group + 1))
+        self.idigit = tuple(i for i in range(self.length) if i not in self.isep)
+
+        # itertools.batched() is only 3.12+
+        iterator = iter(self.idigit)
+        self.ipairs = tuple(tuple(islice(iterator, 2)) for _ in range(len(self.idigit) // 2))
+
+    def match(self, a: str) -> bool:
+        if len(a) != self.length:
+            return False
+        if not all(a[i] == self.sep for i in self.isep):
+            return False
+        if not all(a[i] in hexdigits for i in self.idigit):
+            return False
+        return True
+
+
+EUI48_FORMATS = (
+    EUI48Format('12:34:56:78:90:ab', ':'),
+    EUI48Format('12-34-56-78-90-ab', '-'),
+)
 
 
 def check_eui48(a: str, /) -> bool:
     """ Check if the input is an EUI-48 identifier.
 
-    Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Letters can be in upper or lower case.
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Letters can be in upper or
+    lower case.
 
     :return: ``True`` if `a` is an EUI-48 identifier, otherwise ``False``.
     """
-    if len(a) != EUI48_LENGTH:
-        return False
-    sep = None
-    isep = frozenset(range(2, EUI48_LENGTH, 3))
-    for i, c in enumerate(a):
-        if i in isep:
-            if sep is None:
-                if c not in EUI48_SEPARATORS:
-                    return False
-                sep = c
-            elif c != sep:
-                return False
-        elif c not in hexdigits:
-            return False
-    return True
+    return any(fmt.match(a) for fmt in EUI48_FORMATS)
 
 
-def int_to_eui48(i: int, /, *, sep: str = ':') -> str:
+def int_to_eui48(i: int, /, *, sep: str = ':', group: int = 2) -> str:
     """ Convert an integer into an EUI-48 identifier.
 
-    Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Set `sep` to either ':' (the default value) or
-    '-'.
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Set `sep` to either ':' (the
+    default value), '-' or '.'.
 
     :raises ValueError: If the provided value cannot be represented by EUI-48.
     :return: `i` converted from ``int`` into EUI-48 identifier.
     """
     if 0 <= i <= EUI48_MAX:
-        return i.to_bytes(6, byteorder='big', signed=False).hex(sep)
-    raise ValueError('this number cannot be represented as EUI-48')
+        return i.to_bytes(6, byteorder='big', signed=False).hex(sep, bytes_per_sep=group // 2)
+    raise ValueError(f'this number cannot be represented as EUI-48: {i!r}')
 
 
 def eui48_to_int(a: str, /) -> int:
     """ Convert an EUI-48 identifier into an integer.
 
-    Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Letters can be in either upper or lower case.
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Letters can be in upper or
+    lower case.
 
     No checks are performed on the input: if the provided string is not an EUI-48 identifier, this function will produce
     an error. Use :func:`check_eui48` first if you're not sure about the input.
 
+    :raises ValueError: If `a` cannot be parsed as EUI-48 identifier.
     :return: `a` converted from EUI-48 identifier into ``int``.
     """
-    sep = a[2]
-    octets = [int(s, 16) for s in a.split(sep)]
-    return int.from_bytes(octets, byteorder='big', signed=False)
+    for fmt in EUI48_FORMATS:
+        if fmt.match(a):
+            octets = [int(a[i1] + a[i2], 16) for (i1, i2) in fmt.ipairs]
+            return int.from_bytes(octets, byteorder='big', signed=False)
+    raise ValueError(f'invalid EUI-48: {a!r}')
 
 
 def eui48_bit_distance(a: str, b: str, /) -> int:
