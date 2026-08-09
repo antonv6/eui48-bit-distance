@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.0 - unreleased
+
+Support `.` as the separator.
+
+Support 2 or 4 hex digits per group.
+
+Supported formats are now `12:34:56:78:90:ab`, `12-34-56-78-90-ab` and
+`1234.5678.90ab`.
+
+
 ## 0.4.0 - 2026-08-01
 
 Support `-` as the separator.

@@ -10,13 +10,16 @@ EUI48_RE = (
     re.compile(':'.join(['([0-9A-Fa-f]{2})'] * 6)),
     # 12-34-56-78-90-ab
     re.compile('-'.join(['([0-9A-Fa-f]{2})'] * 6)),
+    # 1234.5678.90ab
+    re.compile('.'.join(['([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})'] * 3)),
 )
 
 
 def check_eui48(a: str, /) -> bool:
     """ Check if the input is an EUI-48 identifier.
 
-    Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Letters can be in upper or lower case.
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Letters can be in upper or
+    lower case.
 
     :return: ``True`` if `a` is an EUI-48 identifier, otherwise ``False``.
     """
@@ -26,24 +29,25 @@ def check_eui48(a: str, /) -> bool:
     return False
 
 
-def int_to_eui48(i: int, /, *, sep: str = ':') -> str:
+def int_to_eui48(i: int, /, *, sep: str = ':', group: int = 2) -> str:
     """ Convert an integer into an EUI-48 identifier.
 
-    Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Set `sep` to either ':' (the default value) or
-    '-'.
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Set `sep` to either ':' (the
+    default value), '-' or '.'.
 
     :raises ValueError: If `i` cannot be represented by EUI-48.
     :return: `i` converted from ``int`` into EUI-48 identifier.
     """
     if 0 <= i <= EUI48_MAX:
-        return i.to_bytes(6, byteorder='big', signed=False).hex(sep)
+        return i.to_bytes(6, byteorder='big', signed=False).hex(sep, bytes_per_sep=group // 2)
     raise ValueError(f'this number cannot be represented as EUI-48: {i!r}')
 
 
 def eui48_to_int(a: str, /) -> int:
     """ Convert an EUI-48 identifier into an integer.
 
-    Supported formats: ``12:34:56:78:90:ab`` and ``12-34-56-78-90-ab``. Letters can be in either upper or lower case.
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Letters can be in upper or
+    lower case.
 
     :func:`check_eui48` can be used to check if the input is a valid EUI-48 identifier.
 

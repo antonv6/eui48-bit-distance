@@ -15,19 +15,51 @@ def test_generate_valid_eui48(a):
 
 
 @given(st.integers(0, EUI48_MAX))
-def test_eui48_roundtrip(a):
-    assert eui48_to_int(int_to_eui48(a)) == a
+def test_eui48_roundtrip_colon(a):
+    assert eui48_to_int(int_to_eui48(a, sep=':')) == a
 
 
 @given(st.integers(0, EUI48_MAX))
-def test_eui48_case(a):
-    eui48 = int_to_eui48(a)
+def test_eui48_roundtrip_hyphen(a):
+    assert eui48_to_int(int_to_eui48(a, sep='-')) == a
+
+
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_roundtrip_dot(a):
+    assert eui48_to_int(int_to_eui48(a, sep='.', group=4)) == a
+
+
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_case_colon(a):
+    eui48 = int_to_eui48(a, sep=':')
     assert eui48_to_int(eui48.lower()) == eui48_to_int(eui48.upper())
 
 
 @given(st.integers(0, EUI48_MAX))
-def test_eui48_formats(a):
+def test_eui48_case_hyphen(a):
+    eui48 = int_to_eui48(a, sep='-')
+    assert eui48_to_int(eui48.lower()) == eui48_to_int(eui48.upper())
+
+
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_case_dot(a):
+    eui48 = int_to_eui48(a, sep='.', group=4)
+    assert eui48_to_int(eui48.lower()) == eui48_to_int(eui48.upper())
+
+
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_formats_colon_hyphen(a):
     assert eui48_to_int(int_to_eui48(a, sep=':')) == eui48_to_int(int_to_eui48(a, sep='-'))
+
+
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_formats_colon_dot(a):
+    assert eui48_to_int(int_to_eui48(a, sep=':')) == eui48_to_int(int_to_eui48(a, sep='.', group=4))
+
+
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_formats_hyphen_dot(a):
+    assert eui48_to_int(int_to_eui48(a, sep='-')) == eui48_to_int(int_to_eui48(a, sep='.', group=4))
 
 
 @given(st.integers(0, EUI48_MAX), st.integers(0, 48))

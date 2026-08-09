@@ -43,6 +43,15 @@ def test_int_to_eui48_hyphen(a, b):
     assert int_to_eui48(a, sep='-') == b
 
 
+@pytest.mark.parametrize('a, b', [
+    (0, '0000.0000.0000'),
+    (256, '0000.0000.0100'),
+    (EUI48_MAX, 'ffff.ffff.ffff'),
+])
+def test_int_to_eui48_dot(a, b):
+    assert int_to_eui48(a, sep='.', group=4) == b
+
+
 @pytest.mark.parametrize('a', [
     -1,
     EUI48_MAX + 1,
@@ -70,6 +79,15 @@ def test_eui48_to_int_hyphen(a, b):
     assert eui48_to_int(a) == b
 
 
+@pytest.mark.parametrize('a, b', [
+    ('0000.0000.0000', 0),
+    ('0000.0000.0100', 256),
+    ('ffff.ffff.ffff', EUI48_MAX),
+])
+def test_eui48_to_int_dot(a, b):
+    assert eui48_to_int(a) == b
+
+
 @pytest.mark.parametrize('a', [
     '00:00:00:00:00:00',
     '12:34:56:78:90:ab',
@@ -77,6 +95,8 @@ def test_eui48_to_int_hyphen(a, b):
     '1a:2b:3c:4d:5e:6f',
     '00-00-00-00-00-00',
     'ab-cd-ef-AB-CD-EF',
+    '1234.5678.90ab',
+    'D00D.F00D.CAFE',
 ])
 def test_check_eui48_true(a):
     assert check_eui48(a) is True
@@ -92,6 +112,9 @@ def test_check_eui48_true(a):
     '12:34:56:78:90:ab:cd:ef',
     '1234567890ab',
     'ca:fe',
+    'four.five.nine',
+    '123.456.789.0ab',
+    '00.11.22.33.44.55',
 ])
 def test_check_eui48_false(a):
     assert check_eui48(a) is False
@@ -100,15 +123,15 @@ def test_check_eui48_false(a):
 @pytest.mark.parametrize('a, b, distance', [
     # identical
     ('00:00:00:00:00:00', '00:00:00:00:00:00', 0),
-    ('12:34:56:78:90:ab', '12:34:56:78:90:ab', 0),
-    ('AB:CD:EF:01:23:45', 'ab:cd:ef:01:23:45', 0),
+    ('12:34:56:78:90:ab', '12-34-56-78-90-ab', 0),
+    ('AB-CD-EF-01-23-45', 'ab:cd:ef:01:23:45', 0),
 
     # near
     ('00:00:00:00:00:00', '00:04:00:00:04:00', 2),
     ('00:00:00:00:00:00', '00:00:00:01:01:01', 3),
 
     # far
-    ('ff:ff:ff:00:00:00', '00:00:00:FF:FF:FF', 48),
+    ('ff:ff:ff:00:00:00', '00-00-00-FF-FF-FF', 48),
 ])
 def test_eui48_bit_distance(a, b, distance):
     assert eui48_bit_distance(a, b) == distance
