@@ -2,9 +2,11 @@ import pytest
 
 from src.eui48_bit_distance import (
     EUI48_MAX,
+    bytes_to_eui48,
     check_eui48,
     eui48_bit_distance,
     eui48_find_similar,
+    eui48_to_bytes,
     eui48_to_int,
     int_to_eui48,
 )
@@ -23,6 +25,33 @@ def test_eui48_constants(a, b):
     Right now we don't care about bit order, but it might become important in future.
     """
     assert a == b
+
+
+@pytest.mark.parametrize('a, b', [
+    (bytes([0x00, 0x00, 0x00, 0x00, 0x00, 0x00]), '00:00:00:00:00:00'),
+    (bytes([0x00, 0x00, 0x00, 0x00, 0x01, 0x00]), '00:00:00:00:01:00'),
+    (bytes([0xff, 0xff, 0xff, 0xff, 0xff, 0xff]), 'ff:ff:ff:ff:ff:ff'),
+])
+def test_bytes_to_eui48_colon(a, b):
+    assert bytes_to_eui48(a, sep=':') == b
+
+
+@pytest.mark.parametrize('a, b', [
+    (bytes([0x00, 0x00, 0x00, 0x00, 0x00, 0x00]), '00-00-00-00-00-00'),
+    (bytes([0x00, 0x00, 0x00, 0x00, 0x01, 0x00]), '00-00-00-00-01-00'),
+    (bytes([0xff, 0xff, 0xff, 0xff, 0xff, 0xff]), 'ff-ff-ff-ff-ff-ff'),
+])
+def test_bytes_to_eui48_hyphen(a, b):
+    assert bytes_to_eui48(a, sep='-') == b
+
+
+@pytest.mark.parametrize('a, b', [
+    (bytes([0x00, 0x00, 0x00, 0x00, 0x00, 0x00]), '0000.0000.0000'),
+    (bytes([0x00, 0x00, 0x00, 0x00, 0x01, 0x00]), '0000.0000.0100'),
+    (bytes([0xff, 0xff, 0xff, 0xff, 0xff, 0xff]), 'ffff.ffff.ffff'),
+])
+def test_bytes_to_eui48_dot(a, b):
+    assert bytes_to_eui48(a, sep='.', group=4) == b
 
 
 @pytest.mark.parametrize('a, b', [
@@ -59,6 +88,33 @@ def test_int_to_eui48_dot(a, b):
 def test_int_to_eui48_invalid(a):
     with pytest.raises(ValueError, match='EUI-48'):
         assert int_to_eui48(a) is not None
+
+
+@pytest.mark.parametrize('a, b', [
+    ('00:00:00:00:00:00', bytes([0x00, 0x00, 0x00, 0x00, 0x00, 0x00])),
+    ('00:00:00:00:01:00', bytes([0x00, 0x00, 0x00, 0x00, 0x01, 0x00])),
+    ('ff:ff:ff:ff:ff:ff', bytes([0xff, 0xff, 0xff, 0xff, 0xff, 0xff])),
+])
+def test_eui48_to_bytes_colon(a, b):
+    assert eui48_to_bytes(a) == b
+
+
+@pytest.mark.parametrize('a, b', [
+    ('00-00-00-00-00-00', bytes([0x00, 0x00, 0x00, 0x00, 0x00, 0x00])),
+    ('00-00-00-00-01-00', bytes([0x00, 0x00, 0x00, 0x00, 0x01, 0x00])),
+    ('ff-ff-ff-ff-ff-ff', bytes([0xff, 0xff, 0xff, 0xff, 0xff, 0xff])),
+])
+def test_eui48_to_bytes_hyphen(a, b):
+    assert eui48_to_bytes(a) == b
+
+
+@pytest.mark.parametrize('a, b', [
+    ('0000.0000.0000', bytes([0x00, 0x00, 0x00, 0x00, 0x00, 0x00])),
+    ('0000.0000.0100', bytes([0x00, 0x00, 0x00, 0x00, 0x01, 0x00])),
+    ('ffff.ffff.ffff', bytes([0xff, 0xff, 0xff, 0xff, 0xff, 0xff])),
+])
+def test_eui48_to_bytes_dot(a, b):
+    assert eui48_to_bytes(a) == b
 
 
 @pytest.mark.parametrize('a, b', [

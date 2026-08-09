@@ -29,6 +29,20 @@ def check_eui48(a: str, /) -> bool:
     return False
 
 
+def bytes_to_eui48(b: bytes, /, *, sep: str = ':', group: int = 2) -> str:
+    """ Convert bytes into an EUI-48 identifier.
+
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Set `sep` to either ':' (the
+    default value), '-' or '.'. Set `group` to either 2 (the default value) or 4.
+
+    Using `sep` and `group` arguments carelessly can result in output being in an unsupported format. Currently there
+    are no guardrails against that.
+
+    :return: `b` converted from ``bytes`` into EUI-48 identifier.
+    """
+    return b.hex(sep, bytes_per_sep=group // 2)
+
+
 def int_to_eui48(i: int, /, *, sep: str = ':', group: int = 2) -> str:
     """ Convert an integer into an EUI-48 identifier.
 
@@ -42,8 +56,27 @@ def int_to_eui48(i: int, /, *, sep: str = ':', group: int = 2) -> str:
     :return: `i` converted from ``int`` into EUI-48 identifier.
     """
     if 0 <= i <= EUI48_MAX:
-        return i.to_bytes(6, byteorder='big', signed=False).hex(sep, bytes_per_sep=group // 2)
+        b = i.to_bytes(6, byteorder='big', signed=False)
+        return bytes_to_eui48(b, sep=sep, group=group)
     raise ValueError(f'this number cannot be represented as EUI-48: {i!r}')
+
+
+def eui48_to_bytes(a: str, /) -> bytes:
+    """ Convert an EUI-48 identifier into bytes.
+
+    Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Letters can be in upper or
+    lower case.
+
+    :func:`check_eui48` can be used to check if the input is a valid EUI-48 identifier.
+
+    :raises ValueError: If `a` cannot be parsed as EUI-48 identifier.
+    :return: `a` converted from EUI-48 identifier into ``bytes``.
+    """
+    for regex in EUI48_RE:
+        match = regex.fullmatch(a)
+        if match is not None:
+            return bytes(int(g, 16) for g in match.groups())
+    raise ValueError(f'invalid EUI-48: {a!r}')
 
 
 def eui48_to_int(a: str, /) -> int:
@@ -57,12 +90,8 @@ def eui48_to_int(a: str, /) -> int:
     :raises ValueError: If `a` cannot be parsed as EUI-48 identifier.
     :return: `a` converted from EUI-48 identifier into ``int``.
     """
-    for regex in EUI48_RE:
-        match = regex.fullmatch(a)
-        if match is not None:
-            octets = [int(g, 16) for g in match.groups()]
-            return int.from_bytes(octets, byteorder='big', signed=False)
-    raise ValueError(f'invalid EUI-48: {a!r}')
+    b = eui48_to_bytes(a)
+    return int.from_bytes(b, byteorder='big', signed=False)
 
 
 def eui48_bit_distance(a: str, b: str, /) -> int:
