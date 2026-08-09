@@ -33,7 +33,10 @@ def int_to_eui48(i: int, /, *, sep: str = ':', group: int = 2) -> str:
     """ Convert an integer into an EUI-48 identifier.
 
     Supported formats: ``12:34:56:78:90:ab``, ``12-34-56-78-90-ab`` and ``1234.5678.90ab``. Set `sep` to either ':' (the
-    default value), '-' or '.'.
+    default value), '-' or '.'. Set `group` to either 2 (the default value) or 4.
+
+    Using `sep` and `group` arguments carelessly can result in output being in an unsupported format. Currently there
+    are no guardrails against that.
 
     :raises ValueError: If `i` cannot be represented by EUI-48.
     :return: `i` converted from ``int`` into EUI-48 identifier.
