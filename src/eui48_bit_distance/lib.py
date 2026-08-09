@@ -75,7 +75,7 @@ def eui48_to_bytes(a: str, /) -> bytes:
     for regex in EUI48_RE:
         match = regex.fullmatch(a)
         if match is not None:
-            return bytes(int(g, 16) for g in match.groups())
+            return bytes([int(g, 16) for g in match.groups()])
     raise ValueError(f'invalid EUI-48: {a!r}')
 
 
