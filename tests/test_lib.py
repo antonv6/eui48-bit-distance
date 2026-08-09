@@ -89,6 +89,15 @@ def test_eui48_to_int_dot(a, b):
 
 
 @pytest.mark.parametrize('a', [
+    'ca:fe',
+    'four.five.nine',
+])
+def test_eui48_to_int_invalid(a):
+    with pytest.raises(ValueError, match='EUI-48'):
+        assert eui48_to_int(a) is not None
+
+
+@pytest.mark.parametrize('a', [
     '00:00:00:00:00:00',
     '12:34:56:78:90:ab',
     'ab:cd:ef:ab:cd:ef',
