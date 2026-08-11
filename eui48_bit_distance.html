@@ -247,6 +247,21 @@ lower case.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="eui48_bit_distance.bytes_to_eui48">
+<span class="sig-prename descclassname"><span class="pre">eui48_bit_distance.</span></span><span class="sig-name descname"><span class="pre">bytes_to_eui48</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bytes</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">':'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#eui48_bit_distance.bytes_to_eui48" title="Link to this definition">¶</a></dt>
+<dd><p>Convert bytes into an EUI-48 identifier.</p>
+<p>Supported formats: <code class="docutils literal notranslate"><span class="pre">12:34:56:78:90:ab</span></code>, <code class="docutils literal notranslate"><span class="pre">12-34-56-78-90-ab</span></code> and <code class="docutils literal notranslate"><span class="pre">1234.5678.90ab</span></code>. Set <cite>sep</cite> to either ‘:’ (the
+default value), ‘-’ or ‘.’. Set <cite>group</cite> to either 2 (the default value) or 4.</p>
+<p>Using <cite>sep</cite> and <cite>group</cite> arguments carelessly can result in output being in an unsupported format. Currently there
+are no guardrails against that.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><cite>b</cite> converted from <code class="docutils literal notranslate"><span class="pre">bytes</span></code> into EUI-48 identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="eui48_bit_distance.int_to_eui48">
 <span class="sig-prename descclassname"><span class="pre">eui48_bit_distance.</span></span><span class="sig-name descname"><span class="pre">int_to_eui48</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">':'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#eui48_bit_distance.int_to_eui48" title="Link to this definition">¶</a></dt>
 <dd><p>Convert an integer into an EUI-48 identifier.</p>
@@ -260,6 +275,23 @@ are no guardrails against that.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><cite>i</cite> converted from <code class="docutils literal notranslate"><span class="pre">int</span></code> into EUI-48 identifier.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="eui48_bit_distance.eui48_to_bytes">
+<span class="sig-prename descclassname"><span class="pre">eui48_bit_distance.</span></span><span class="sig-name descname"><span class="pre">eui48_to_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#eui48_bit_distance.eui48_to_bytes" title="Link to this definition">¶</a></dt>
+<dd><p>Convert an EUI-48 identifier into bytes.</p>
+<p>Supported formats: <code class="docutils literal notranslate"><span class="pre">12:34:56:78:90:ab</span></code>, <code class="docutils literal notranslate"><span class="pre">12-34-56-78-90-ab</span></code> and <code class="docutils literal notranslate"><span class="pre">1234.5678.90ab</span></code>. Letters can be in upper or
+lower case.</p>
+<p><a class="reference internal" href="#eui48_bit_distance.check_eui48" title="eui48_bit_distance.check_eui48"><code class="xref py py-func docutils literal notranslate"><span class="pre">check_eui48()</span></code></a> can be used to check if the input is a valid EUI-48 identifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <cite>a</cite> cannot be parsed as EUI-48 identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>a</cite> converted from EUI-48 identifier into <code class="docutils literal notranslate"><span class="pre">bytes</span></code>.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -364,7 +396,9 @@ number of elements in the output, it also drops inputs that have distance greate
             <ul>
 <li><a class="reference internal" href="#">eui48_bit_distance package</a><ul>
 <li><a class="reference internal" href="#eui48_bit_distance.check_eui48"><code class="docutils literal notranslate"><span class="pre">check_eui48()</span></code></a></li>
+<li><a class="reference internal" href="#eui48_bit_distance.bytes_to_eui48"><code class="docutils literal notranslate"><span class="pre">bytes_to_eui48()</span></code></a></li>
 <li><a class="reference internal" href="#eui48_bit_distance.int_to_eui48"><code class="docutils literal notranslate"><span class="pre">int_to_eui48()</span></code></a></li>
+<li><a class="reference internal" href="#eui48_bit_distance.eui48_to_bytes"><code class="docutils literal notranslate"><span class="pre">eui48_to_bytes()</span></code></a></li>
 <li><a class="reference internal" href="#eui48_bit_distance.eui48_to_int"><code class="docutils literal notranslate"><span class="pre">eui48_to_int()</span></code></a></li>
 <li><a class="reference internal" href="#eui48_bit_distance.eui48_bit_distance"><code class="docutils literal notranslate"><span class="pre">eui48_bit_distance()</span></code></a></li>
 <li><a class="reference internal" href="#eui48_bit_distance.eui48_find_similar"><code class="docutils literal notranslate"><span class="pre">eui48_find_similar()</span></code></a></li>
