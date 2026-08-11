@@ -16,6 +16,11 @@ def test_generate_valid_eui48(a):
     assert check_eui48(int_to_eui48(a)) is True
 
 
+@given(st.integers(0, EUI48_MAX))
+def test_eui48_bytes_len(a):
+    assert len(eui48_to_bytes(int_to_eui48(a))) == 6
+
+
 @given(st.binary(min_size=6, max_size=6))
 def test_eui48_to_bytes_roundtrip_colon(a):
     assert eui48_to_bytes(bytes_to_eui48(a, sep=':')) == a
