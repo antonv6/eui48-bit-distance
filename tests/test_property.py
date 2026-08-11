@@ -2,8 +2,10 @@ from hypothesis import given, strategies as st
 
 from src.eui48_bit_distance import (
     EUI48_MAX,
+    bytes_to_eui48,
     check_eui48,
     eui48_bit_distance,
+    eui48_to_bytes,
     eui48_to_int,
     int_to_eui48,
 )
@@ -12,6 +14,21 @@ from src.eui48_bit_distance import (
 @given(st.integers(0, EUI48_MAX))
 def test_generate_valid_eui48(a):
     assert check_eui48(int_to_eui48(a)) is True
+
+
+@given(st.binary(min_size=6, max_size=6))
+def test_eui48_to_bytes_roundtrip_colon(a):
+    assert eui48_to_bytes(bytes_to_eui48(a, sep=':')) == a
+
+
+@given(st.binary(min_size=6, max_size=6))
+def test_eui48_to_bytes_roundtrip_hyphen(a):
+    assert eui48_to_bytes(bytes_to_eui48(a, sep='-')) == a
+
+
+@given(st.binary(min_size=6, max_size=6))
+def test_eui48_to_bytes_roundtrip_dot(a):
+    assert eui48_to_bytes(bytes_to_eui48(a, sep='.', group=4)) == a
 
 
 @given(st.integers(0, EUI48_MAX))
