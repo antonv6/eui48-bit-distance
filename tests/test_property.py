@@ -15,17 +15,17 @@ def test_generate_valid_eui48(a):
 
 
 @given(st.integers(0, EUI48_MAX))
-def test_eui48_roundtrip_colon(a):
+def test_eui48_to_int_roundtrip_colon(a):
     assert eui48_to_int(int_to_eui48(a, sep=':')) == a
 
 
 @given(st.integers(0, EUI48_MAX))
-def test_eui48_roundtrip_hyphen(a):
+def test_eui48_to_int_roundtrip_hyphen(a):
     assert eui48_to_int(int_to_eui48(a, sep='-')) == a
 
 
 @given(st.integers(0, EUI48_MAX))
-def test_eui48_roundtrip_dot(a):
+def test_eui48_to_int_roundtrip_dot(a):
     assert eui48_to_int(int_to_eui48(a, sep='.', group=4)) == a
 
 
