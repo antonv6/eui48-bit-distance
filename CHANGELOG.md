@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0 - 2026-08-18
+
+Support converting to `bytes` and parsing from `bytes`.
+
+
 ## 0.5.0 - 2026-08-08
 
 Support `.` as the separator.
