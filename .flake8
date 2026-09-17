@@ -1,3 +1,4 @@
 [flake8]
 max-line-length = 120
 pytest-parametrize-names-type = csv
+extend-select = B901,B902,B903,B904,B907,B908,B909
